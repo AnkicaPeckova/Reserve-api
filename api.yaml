@@ -1,0 +1,29 @@
+swagger: '2.0'
+
+info:
+  title: Reserve API
+  version: "0.1"
+  description: Reserve microservice
+consumes:
+  - application/json
+produces:
+  - application/json
+basePath: "/api/reserves"
+paths:
+  /healthz:
+    get:
+      tags: 
+        - Reserve
+      operationId: app.healthz
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
