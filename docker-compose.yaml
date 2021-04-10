@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   backend:
-    build: ./
+    build: ./src
     restart: always
     environment:
       - POSTGRES_USER=postgres
