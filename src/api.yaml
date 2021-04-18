@@ -27,3 +27,88 @@ paths:
           description: Forbidden
         404:
           description: Not Found
+  /products:
+    get:
+      tags: 
+        - Reserve
+      operationId: app.getAllTransferProducts
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
+  /products/rent:
+    post:
+      tags: 
+        - Reserve
+      operationId: app.rentTransferProduct
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
+  /products/rent/pay:
+    post:
+      tags: 
+        - Reserve
+      operationId: app.payTransferProductRent
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
+  /products/parked:
+    post:
+      tags: 
+        - Reserve
+      operationId: app.parkTransferProduct
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
+  /products/parked/pay:
+    post:
+      tags: 
+        - Reserve
+      operationId: app.payTransferProductPark
+      summary: Healthz endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
