@@ -10,23 +10,6 @@ produces:
   - application/json
 basePath: "/api/reserves"
 paths:
-  /healthz:
-    get:
-      tags: 
-        - Reserve
-      operationId: app.healthz
-      summary: Healthz endpoint
-      responses:
-        200:
-          description: Return Health Status
-        400:
-          description: Bad Request
-        401:
-          description: Unauthorized
-        403:
-          description: Forbidden
-        404:
-          description: Not Found
   /products:
     get:
       tags: 
@@ -78,7 +61,7 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-  /products/parked:
+  /products/park:
     post:
       tags: 
         - Reserve
