@@ -7,3 +7,4 @@ Werkzeug~=1.0.1
 alembic~=1.5.8
 marshmallow~=3.11.1
 psycopg2 >= 2.8.6
+pyjwt
