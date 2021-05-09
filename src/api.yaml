@@ -17,17 +17,32 @@ securityDefinitions:
     x-authentication-scheme: Bearer
     x-bearerInfoFunc: app.decode_token
 paths:
-  /products:
+  /:
+    get:
+      operationId: app.index
+      summary: Health Endpoint
+      responses:
+        200:
+          description: Return Health Status
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not Found
+  /transfer-products:
     get:
       security:
         - jwt: [ 'secret' ]
       tags: 
         - Reserve
       operationId: app.getAllTransferProducts
-      summary: Healthz endpoint
+      summary: Returns all transfer products, including Rented and Parked
       responses:
         200:
-          description: Return Health Status
+          description: All Transfer Products Response
         400:
           description: Bad Request
         401:
@@ -36,17 +51,27 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-  /products/rent:
+  /transfer-products/rent:
     post:
       security:
         - jwt: [ 'secret' ]
       tags: 
         - Reserve
       operationId: app.rentTransferProduct
-      summary: Healthz endpoint
+      summary: Rent a Product
+      parameters:
+        - in: body
+          name: request_body
+          schema:
+            type: object
+            required:
+              - product_id
+            properties:
+              product_id:
+                type: string
       responses:
         200:
-          description: Return Health Status
+          description: Rent a Product Response
         400:
           description: Bad Request
         401:
@@ -55,17 +80,27 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-  /products/rent/pay:
+  /transfer-products/rent/pay:
     post:
       security:
         - jwt: [ 'secret' ]
       tags: 
         - Reserve
       operationId: app.payTransferProductRent
-      summary: Healthz endpoint
+      summary: Pay for a Rented Product
+      parameters:
+        - in: body
+          name: request_body
+          schema:
+            type: object
+            required:
+              - transfer_product_rent_id
+            properties:
+              transfer_product_rent_id:
+                type: string
       responses:
         200:
-          description: Return Health Status
+          description: Pay Rented Product Response
         400:
           description: Bad Request
         401:
@@ -74,17 +109,33 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-  /products/park:
+  /transfer-products/park:
     post:
       security:
         - jwt: [ 'secret' ]
       tags: 
         - Reserve
       operationId: app.parkTransferProduct
-      summary: Healthz endpoint
+      summary: Park a Product
+      parameters:
+        - in: body
+          name: request_body
+          schema:
+            type: object
+            required:
+              - product_id
+              - parking_spot_id
+              - parking_zone_id
+            properties:
+              product_id:
+                type: string
+              parking_spot_id:
+                type: string
+              parking_zone_id:
+                type: string
       responses:
         200:
-          description: Return Health Status
+          description: Park Product Response
         400:
           description: Bad Request
         401:
@@ -93,17 +144,27 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-  /products/parked/pay:
+  /transfer-products/park/pay:
     post:
       security:
         - jwt: [ 'secret' ]
       tags: 
         - Reserve
       operationId: app.payTransferProductPark
-      summary: Healthz endpoint
+      summary: Pay for a Parked Product
+      parameters:
+        - in: body
+          name: request_body
+          schema:
+            type: object
+            required:
+              - transfer_product_park_id
+            properties:
+              transfer_product_park_id:
+                type: string
       responses:
         200:
-          description: Return Health Status
+          description: Pay Parked Product Response
         400:
           description: Bad Request
         401:
