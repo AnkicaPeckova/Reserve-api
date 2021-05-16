@@ -1,8 +1,15 @@
 version: "3.2"
 
 services:
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+
   backend:
     build: ./src
     restart: always
+    depends_on: 
+      - consul
     ports:
       - 5000:5000

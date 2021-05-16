@@ -9,5 +9,4 @@ marshmallow
 marshmallow-sqlalchemy
 psycopg2
 pyjwt
-netifaces
 python-consul
